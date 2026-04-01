@@ -429,9 +429,13 @@
 
   .contact__form {
     flex-direction: column;
+    padding: 0 20px;
   }
 
   .contact__input {
+    flex: none;
+    width: 100%;
+    box-sizing: border-box;
     border-right: 1px solid var(--border);
     border-radius: var(--radius-input);
     margin-bottom: 12px;
@@ -443,6 +447,10 @@
   }
 
   /* Footer */
+  .footer {
+    height: auto;
+  }
+
   .footer__inner {
     padding: 0 var(--pad-mobile);
     flex-direction: column;
