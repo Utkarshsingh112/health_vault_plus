@@ -562,6 +562,13 @@
 }
 
 @media (max-width: 768px) {
+  .nav__mobile-menu {
+    inset: 0;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
   .nav__inner {
     padding: 0 var(--pad-mobile);
   }

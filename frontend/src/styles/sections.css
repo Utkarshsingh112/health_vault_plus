@@ -375,6 +375,11 @@
    ============================================ */
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+  }
+
   /* Hero */
   .hero__inner {
     grid-template-columns: 1fr;
