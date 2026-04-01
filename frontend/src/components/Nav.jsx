@@ -66,7 +66,7 @@ export default function Nav({ activeSection }) {
           </div>
 
           {/* Mobile Hamburger */}
-          <div className="nav__hamburger" onClick={() => setMobileOpen(true)}>
+          <div className={`nav__hamburger ${mobileOpen ? 'open' : ''}`} onClick={() => setMobileOpen(!mobileOpen)}>
             <span />
             <span />
             <span />
@@ -76,9 +76,6 @@ export default function Nav({ activeSection }) {
 
       {/* Mobile Menu Overlay */}
       <div className={`nav__mobile-menu ${mobileOpen ? 'open' : ''}`}>
-        <button className="nav__mobile-close" onClick={() => setMobileOpen(false)}>
-          ✕
-        </button>
         {NAV_LINKS.map((link) => (
           <span
             key={link.target}
