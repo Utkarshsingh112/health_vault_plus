@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const DemoRequest = require('../models/DemoRequest');
 const { validateDemoRequest } = require('../validators/demoValidator');
+const { sendAdminNotification } = require('../config/mailer');
 
 /**
  * POST /api/demo-request
@@ -18,6 +19,14 @@ const createDemoRequest = async (req, res, next) => {
     // Check if MongoDB is connected
     if (mongoose.connection.readyState !== 1) {
       console.log(`📧 Demo request received (not saved — no DB): ${sanitized.email}`);
+      
+      // Send email notification silently so it doesn't fail the response
+      try {
+        await sendAdminNotification(sanitized.email);
+      } catch (emailErr) {
+        console.error("Non-fatal: Email notification failed", emailErr.message);
+      }
+
       return res.status(200).json({
         success: true,
         message: 'Demo request received. We will be in touch soon!',
@@ -28,7 +37,14 @@ const createDemoRequest = async (req, res, next) => {
     // Save to database
     const demoRequest = await DemoRequest.create(sanitized);
 
-    console.log(`📧 Demo request saved: ${demoRequest.email}`);
+    console.log(`📧 Demo request saved`);
+
+    // Send email notification silently so it doesn't fail the response
+    try {
+      await sendAdminNotification(sanitized.email);
+    } catch (emailErr) {
+      console.error("Non-fatal: Email notification failed", emailErr.message);
+    }
 
     res.status(201).json({
       success: true,
