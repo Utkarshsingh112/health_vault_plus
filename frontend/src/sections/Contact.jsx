@@ -50,7 +50,7 @@ export default function Contact() {
 
           <p className="contact__subtext">
             We'll walk you through exactly how Health Vault Plus works for your
-            team. No commitment, no contracts — just a live walkthrough.
+            team.Just a live walkthrough.
           </p>
 
           <form className="contact__form" onSubmit={handleSubmit}>
