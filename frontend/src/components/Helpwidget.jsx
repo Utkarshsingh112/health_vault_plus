@@ -54,9 +54,23 @@ export default function HelpWidget() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch("http://localhost:5000/api/demo-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        alert(data.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      alert("Could not reach the server. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const reset = () => {

@@ -22,7 +22,7 @@ const createDemoRequest = async (req, res, next) => {
       
       // Send email notification silently so it doesn't fail the response
       try {
-        await sendAdminNotification(sanitized.email);
+        await sendAdminNotification(sanitized);
       } catch (emailErr) {
         console.error("Non-fatal: Email notification failed", emailErr.message);
       }
@@ -41,7 +41,7 @@ const createDemoRequest = async (req, res, next) => {
 
     // Send email notification silently so it doesn't fail the response
     try {
-      await sendAdminNotification(sanitized.email);
+      await sendAdminNotification(sanitized);
     } catch (emailErr) {
       console.error("Non-fatal: Email notification failed", emailErr.message);
     }
