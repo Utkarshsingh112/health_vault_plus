@@ -6,6 +6,7 @@ import HowItWorks from './sections/HowItWorks';
 import WhoItsFor from './sections/WhoItsFor';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
+import HelpWidget from './components/Helpwidget';
 import useScrollReveal from './hooks/useScrollReveal';
 import useActiveSection from './hooks/useActiveSection';
 
@@ -24,6 +25,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <HelpWidget />
     </>
   );
 }
