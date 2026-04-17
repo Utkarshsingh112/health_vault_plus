@@ -2,15 +2,6 @@ import React from 'react';
 import Button from '../components/Button';
 import Badge from '../components/Badge';
 
-/* 
-  Headline Options (as per spec):
-  Option A: "Faster Claims. Clearer Decisions."
-  Option B: "From Document to Decision — In Seconds."
-  Option C: "Claim Processing, Finally Structured."
-  
-  Default render: Option A
-*/
-
 export default function Hero() {
   return (
     <section className="hero" id="hero">
@@ -20,18 +11,18 @@ export default function Hero() {
           <div className="hero__left">
             <div className="hero__eyebrow hero-anim-1">
               <span className="hero__eyebrow-dot" />
-              <span>For TPAs &amp; Insurance Teams</span>
+              <span>Pre-Authorization Intelligence</span>
             </div>
 
             <h1 className="hero__headline hero-anim-2">
-              Faster <span className="accent">Claims</span>.<br />
-              Clearer Decisions.
+              Get the <span className="accent">Maximum</span>.<br />
+              Before You File.
             </h1>
 
             <p className="hero__subtext hero-anim-3">
-              Health Vault Plus helps TPAs and insurers process medical claims
-              with speed and structure. Submit a claim, get a detailed output.
-              No chaos, no manual guesswork.
+              Health Vault Plus checks your claim documents before submission —
+              catching coverage gaps, missing paperwork, and errors upfront so
+              you walk away with every rupee you're entitled to.
             </p>
 
             <div className="hero__cta-row hero-anim-4">
@@ -61,8 +52,8 @@ export default function Hero() {
             <div className="mockup-card hero-anim-card">
               {/* Header */}
               <div className="mockup-card__header">
-                <span className="mockup-card__claim-id">Claim #CLM-0042</span>
-                <Badge label="Under Review" variant="default" />
+                <span className="mockup-card__claim-id">Pre-Auth #PA-0042</span>
+                <Badge label="Check Complete" variant="success" />
               </div>
 
               <div className="mockup-card__divider" />
@@ -76,8 +67,8 @@ export default function Hero() {
                   <line x1="16" y1="17" x2="8" y2="17" />
                   <polyline points="10 9 9 9 8 9" />
                 </svg>
-                <span className="mockup-card__row-label">Lab Report</span>
-                <Badge label="Received" variant="success" />
+                <span className="mockup-card__row-label">Policy Coverage</span>
+                <Badge label="Verified" variant="success" />
               </div>
 
               <div className="mockup-card__row">
@@ -88,8 +79,8 @@ export default function Hero() {
                   <line x1="16" y1="17" x2="8" y2="17" />
                   <polyline points="10 9 9 9 8 9" />
                 </svg>
-                <span className="mockup-card__row-label">Prescription</span>
-                <Badge label="Received" variant="success" />
+                <span className="mockup-card__row-label">Document Set</span>
+                <Badge label="Complete" variant="success" />
               </div>
 
               <div className="mockup-card__row">
@@ -100,15 +91,15 @@ export default function Hero() {
                   <line x1="16" y1="17" x2="8" y2="17" />
                   <polyline points="10 9 9 9 8 9" />
                 </svg>
-                <span className="mockup-card__row-label">Discharge Summary</span>
-                <Badge label="Pending" variant="warning" />
+                <span className="mockup-card__row-label">Medical Codes</span>
+                <Badge label="Flagged" variant="warning" />
               </div>
 
               <div className="mockup-card__divider" />
 
               {/* Footer */}
               <div className="mockup-card__footer">
-                <span className="mockup-card__footer-text">Processing Documents</span>
+                <span className="mockup-card__footer-text">1 issue to fix before filing</span>
                 <span className="dot-loader">
                   <span />
                   <span />

@@ -3,23 +3,23 @@ import React, { useState, useRef, useEffect } from "react";
 const faqs = [
   {
     q: "What is Health Vault Plus?",
-    a: "Health Vault Plus is a secure digital platform for managing, storing, and sharing medical records — built for hospitals, clinics, and healthcare networks across India.",
+    a: "Health Vault Plus is a pre-authorization intelligence tool. It checks your health insurance claim documents before you file — catching coverage gaps, missing paperwork, and code errors so you walk away with the maximum payout you're entitled to.",
   },
   {
-    q: "Why should I get this?",
-    a: "It eliminates paper-based chaos, reduces medical errors, and gives patients instant access to their full health history from any device, anywhere.",
+    q: "What does a pre-auth check actually do?",
+    a: "It validates everything before your claim is submitted — policy coverage, document completeness, and medical code accuracy. Instead of discovering problems after a rejection, you fix them upfront.",
   },
   {
     q: "Who is this built for?",
-    a: "Healthcare providers (hospitals, clinics, labs), insurance companies, and patients who want seamless, secure health data management.",
+    a: "Policyholders who want their claim to go through without shortfalls, hospitals helping patients secure cashless approval, and insurance advisors ensuring clients receive every rupee they're entitled to.",
   },
   {
-    q: "Is patient data safe?",
-    a: "Absolutely. We use end-to-end encryption, role-based access controls, and are compliant with DISHA and ABDM standards.",
+    q: "Will my claim definitely get approved?",
+    a: "We can't guarantee approval — only the insurer decides that. But we make sure that from your side, everything is correct, complete, and in order before you file, giving you the strongest possible position.",
   },
   {
     q: "How do I get started?",
-    a: "Fill out the contact form below and our team will reach out within 24 hours to schedule a personalized demo.",
+    a: "Fill out the contact form and our team will reach out within 24 hours to walk you through how Health Vault Plus works for your specific case.",
   },
 ];
 

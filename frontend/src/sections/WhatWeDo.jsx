@@ -38,23 +38,23 @@ const ZapIcon = () => (
 const FEATURES = [
   {
     icon: <FileTextIcon />,
-    title: 'Reads Any Document Format',
-    description: 'Lab reports, prescriptions, discharge summaries — we handle PDFs, images, and scanned files without any special formatting required.',
+    title: 'Reads All Your Documents',
+    description: 'Policy, lab reports, prescriptions, discharge summaries — we process PDFs, images, and scanned files to build a complete picture of your claim.',
   },
   {
     icon: <LayoutIcon />,
-    title: 'Structured Claim Output',
-    description: 'Every processed claim comes back as a clean, organized report with all extracted parameters laid out clearly for your reviewer.',
+    title: 'Verifies Policy Coverage',
+    description: 'We cross-check your diagnosis, treatment, and procedures against your policy terms to confirm exactly what is covered before you file.',
   },
   {
     icon: <AlertCircleIcon />,
-    title: 'Surfaces What Needs Attention',
-    description: 'Missing documents, inconsistent information, and incomplete submissions are flagged automatically so nothing slips through.',
+    title: 'Flags Issues Before They Cost You',
+    description: 'Missing documents, mismatched codes, and coverage gaps are surfaced upfront — giving you the chance to fix them before a rejection happens.',
   },
   {
     icon: <ZapIcon />,
-    title: 'Faster Than Manual Review',
-    description: 'What takes a reviewer hours to read and compile manually, Health Vault Plus delivers in a fraction of the time.',
+    title: 'Maximizes Your Payout',
+    description: 'Nothing slips through. Every entitled amount is accounted for in your pre-auth readiness report so you walk in fully prepared.',
   },
 ];
 
@@ -64,8 +64,8 @@ export default function WhatWeDo() {
       <div className="container">
         <SectionHeader
           label="What We Do"
-          title="Everything a claims team needs."
-          subtext="We take unstructured claim documents and turn them into structured, reviewable outputs."
+          title="Everything checked. Before you file."
+          subtext="We analyze your documents against your policy to catch every issue before it turns into a rejected or reduced claim."
           align="center"
         />
         <div className="what-we-do__grid">

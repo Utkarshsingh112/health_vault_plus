@@ -35,32 +35,32 @@ const CARDS = [
     variant: 'primary',
     badge: 'Primary Audience',
     icon: <UsersIcon />,
-    title: 'Third Party Administrators',
+    title: 'Policyholders & Patients',
     bullets: [
-      'Process high claim volumes without expanding your team',
-      'Eliminate manual document reading and data entry',
-      "Surface problem claims before they reach your reviewer's desk",
-      'Faster turnaround from submission to decision',
+      'Know exactly where you stand before filing your claim',
+      'Avoid rejections caused by missing or incorrect documentation',
+      'Ensure every entitled amount is captured in your pre-auth',
+      'Walk into every claim fully prepared with zero guesswork',
     ],
   },
   {
     variant: 'secondary',
     icon: <BuildingIcon />,
-    title: 'Insurance Companies',
+    title: 'Hospitals & Treating Facilities',
     bullets: [
-      'Get consistent, structured claim data from every TPA',
-      'Reduce payout errors caused by incomplete documentation',
-      'Scale claim volume without scaling your ops team',
+      'Help patients get cashless approval faster with fewer back-and-forths',
+      'Catch pre-auth issues before submission, not after rejection',
+      'Reduce delays caused by incomplete or mismatched documentation',
     ],
   },
   {
     variant: 'secondary',
     icon: <ActivityIcon />,
-    title: 'Hospitals & Diagnostic Labs',
+    title: 'Insurance Advisors & Agents',
     bullets: [
-      'Faster claim clearance means faster payments to you',
-      'Reduce back-and-forth with TPAs over document formats',
-      'Your reports, submitted and processed without friction',
+      'Add real value to clients at the most critical moment — claim time',
+      'Catch coverage gaps before they become disputes or shortfalls',
+      'Build client trust by ensuring zero claim surprises',
     ],
   },
 ];
@@ -71,7 +71,7 @@ export default function WhoItsFor() {
       <div className="container">
         <SectionHeader
           label="Who It's For"
-          title="Built for the teams who process claims daily."
+          title="Built for everyone who wants their claim to go through."
           align="center"
         />
         <div className="who-its-for__grid">

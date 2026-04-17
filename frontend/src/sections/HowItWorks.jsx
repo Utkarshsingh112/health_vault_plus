@@ -47,22 +47,22 @@ const STEPS = [
   {
     number: 1,
     icon: <UploadCloudIcon />,
-    title: 'Submit the Claim',
-    description: 'Upload all documents related to the claim — lab reports, prescriptions, bills, discharge summaries — in any file format.',
+    title: 'Submit Your Documents',
+    description: 'Upload your policy, medical records, prescriptions, lab reports, bills, and discharge summary — in any file format.',
     active: true,
   },
   {
     number: 2,
     icon: <CpuIcon />,
-    title: 'We Process It',
-    description: 'Our system reads every document, extracts the relevant medical and financial data, and structures it into a clean format.',
+    title: 'We Run the Pre-Auth Check',
+    description: 'Our system validates coverage, document completeness, and code accuracy across every document against your policy terms.',
     active: false,
   },
   {
     number: 3,
     icon: <FileCheckIcon />,
-    title: 'Get a Detailed Output',
-    description: 'Your reviewer receives a full structured report — everything extracted, organized, and flagged — ready to act on immediately.',
+    title: 'Get Your Readiness Report',
+    description: "See exactly what's covered, what's missing, and what to fix — before your claim goes in. No surprises on the other side.",
     active: false,
   },
 ];
@@ -73,7 +73,7 @@ export default function HowItWorks() {
       <div className="container">
         <SectionHeader
           label="How It Works"
-          title="Three steps. That's it."
+          title="Three steps before you file."
           align="center"
         />
         <div className="how-it-works__grid">
