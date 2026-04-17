@@ -9,36 +9,30 @@ const transporter = nodemailer.createTransport({
 });
 
 /**
- * Sends an email notification to the admin about a new help/contact request.
- * @param {{ name: string, email: string, phone: string, query: string }} data
+ * Sends an email notification to the admin about a new demo/contact request.
+ * @param {{ name?: string, email: string, phone?: string, query?: string, submissionType?: string }} data
  */
-const sendAdminNotification = async ({ name, email, phone, query }) => {
+const sendAdminNotification = async ({
+  name = '',
+  email,
+  phone = '',
+  query = '',
+  submissionType = 'demo',
+}) => {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.warn("⚠️ Email credentials not set in .env. Skipping email notification.");
+    console.warn('Email credentials not set in .env. Skipping email notification.');
     return;
   }
 
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER,
-    subject: 'New Contact Request - Health Vault Plus',
-    html: `
-      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
-        <div style="background-color: #0b7285; color: #fff; padding: 20px; text-align: center;">
-          <h2 style="margin: 0;">New Contact Request</h2>
-        </div>
-        <div style="padding: 20px; background-color: #f8f9fa;">
-          <p style="font-size: 16px;">Hello Admin,</p>
-          <p style="font-size: 16px;">A new contact request has been submitted via the Help Widget on Health Vault Plus.</p>
-
-          <table style="width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #fff;">
+  const isContactRequest = submissionType === 'contact';
+  const introText = isContactRequest
+    ? 'A new contact request has been submitted via the Help Widget on Health Vault Plus.'
+    : 'A new demo request has been submitted via the landing page contact section on Health Vault Plus.';
+  const detailsRows = isContactRequest
+    ? `
             <tr>
               <th style="text-align: left; padding: 12px; border: 1px solid #dee2e6; width: 30%; background-color: #f1f3f5;">Name</th>
               <td style="padding: 12px; border: 1px solid #dee2e6;">${name}</td>
-            </tr>
-            <tr>
-              <th style="text-align: left; padding: 12px; border: 1px solid #dee2e6; width: 30%; background-color: #f1f3f5;">Email</th>
-              <td style="padding: 12px; border: 1px solid #dee2e6;"><a href="mailto:${email}" style="color: #0b7285; text-decoration: none;">${email}</a></td>
             </tr>
             <tr>
               <th style="text-align: left; padding: 12px; border: 1px solid #dee2e6; width: 30%; background-color: #f1f3f5;">Phone</th>
@@ -47,7 +41,30 @@ const sendAdminNotification = async ({ name, email, phone, query }) => {
             <tr>
               <th style="text-align: left; padding: 12px; border: 1px solid #dee2e6; width: 30%; background-color: #f1f3f5;">Query</th>
               <td style="padding: 12px; border: 1px solid #dee2e6;">${query}</td>
+            </tr>`
+    : '';
+
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
+    subject: isContactRequest
+      ? 'New Contact Request - Health Vault Plus'
+      : 'New Demo Request - Health Vault Plus',
+    html: `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+        <div style="background-color: #0b7285; color: #fff; padding: 20px; text-align: center;">
+          <h2 style="margin: 0;">${isContactRequest ? 'New Contact Request' : 'New Demo Request'}</h2>
+        </div>
+        <div style="padding: 20px; background-color: #f8f9fa;">
+          <p style="font-size: 16px;">Hello Admin,</p>
+          <p style="font-size: 16px;">${introText}</p>
+
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #fff;">
+            <tr>
+              <th style="text-align: left; padding: 12px; border: 1px solid #dee2e6; width: 30%; background-color: #f1f3f5;">Email</th>
+              <td style="padding: 12px; border: 1px solid #dee2e6;"><a href="mailto:${email}" style="color: #0b7285; text-decoration: none;">${email}</a></td>
             </tr>
+            ${detailsRows}
             <tr>
               <th style="text-align: left; padding: 12px; border: 1px solid #dee2e6; width: 30%; background-color: #f1f3f5;">Timestamp</th>
               <td style="padding: 12px; border: 1px solid #dee2e6;">${new Date().toLocaleString()}</td>
@@ -64,9 +81,9 @@ const sendAdminNotification = async ({ name, email, phone, query }) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(`✉️ Email notification sent for: ${email}`);
+    console.log(`Email notification sent for: ${email}`);
   } catch (error) {
-    console.error(`❌ Failed to send email notification:`, error.message);
+    console.error('Failed to send email notification:', error.message);
     throw error;
   }
 };

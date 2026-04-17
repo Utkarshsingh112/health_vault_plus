@@ -5,7 +5,7 @@ const { sendAdminNotification } = require('../config/mailer');
 
 /**
  * POST /api/demo-request
- * Creates a new demo request with the provided email.
+ * Creates a new demo request or help-widget contact request.
  * Works gracefully even if MongoDB is not connected.
  */
 const createDemoRequest = async (req, res, next) => {

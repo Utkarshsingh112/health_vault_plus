@@ -4,8 +4,8 @@ const demoRequestSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Name is required'],
       trim: true,
+      default: '',
     },
     email: {
       type: String,
@@ -24,8 +24,13 @@ const demoRequestSchema = new mongoose.Schema(
     },
     query: {
       type: String,
-      required: [true, 'Query is required'],
       trim: true,
+      default: '',
+    },
+    submissionType: {
+      type: String,
+      enum: ['demo', 'contact'],
+      default: 'demo',
     },
   },
   {

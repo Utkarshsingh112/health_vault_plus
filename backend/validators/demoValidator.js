@@ -1,13 +1,11 @@
 /**
- * Validates the demo request payload from the HelpWidget contact form.
- * Returns { valid: boolean, error?: string, sanitized?: object }
+ * Validates a demo/contact payload.
+ * Supports:
+ * - email-only submissions from the landing page contact section
+ * - full help-widget contact submissions with name/query
  */
 const validateDemoRequest = (body) => {
   const { email, name, phone, query } = body;
-
-  if (!name || typeof name !== 'string' || name.trim().length === 0) {
-    return { valid: false, error: 'Name is required.' };
-  }
 
   if (!email || typeof email !== 'string') {
     return { valid: false, error: 'Email is required.' };
@@ -24,17 +22,34 @@ const validateDemoRequest = (body) => {
     return { valid: false, error: 'Please provide a valid email address.' };
   }
 
-  if (!query || typeof query !== 'string' || query.trim().length === 0) {
-    return { valid: false, error: 'Query is required.' };
+  const trimmedName =
+    typeof name === 'string' && name.trim().length > 0 ? name.trim() : '';
+  const trimmedQuery =
+    typeof query === 'string' && query.trim().length > 0 ? query.trim() : '';
+  const trimmedPhone =
+    typeof phone === 'string' && phone.trim().length > 0 ? phone.trim() : '';
+
+  const isFullContactRequest =
+    trimmedName.length > 0 || trimmedQuery.length > 0 || trimmedPhone.length > 0;
+
+  if (isFullContactRequest) {
+    if (!trimmedName) {
+      return { valid: false, error: 'Name is required.' };
+    }
+
+    if (!trimmedQuery) {
+      return { valid: false, error: 'Query is required.' };
+    }
   }
 
   return {
     valid: true,
     sanitized: {
-      name: name.trim(),
       email: trimmedEmail,
-      phone: phone && typeof phone === 'string' ? phone.trim() : '',
-      query: query.trim(),
+      name: trimmedName,
+      phone: trimmedPhone,
+      query: trimmedQuery,
+      submissionType: isFullContactRequest ? 'contact' : 'demo',
     },
   };
 };
