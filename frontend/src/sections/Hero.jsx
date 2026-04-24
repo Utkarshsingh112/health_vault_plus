@@ -1,6 +1,6 @@
-import React from 'react';
-import Button from '../components/Button';
-import Badge from '../components/Badge';
+import React from "react";
+import Button from "../components/Button";
+import Badge from "../components/Badge";
 
 export default function Hero() {
   return (
@@ -20,9 +20,10 @@ export default function Hero() {
             </h1>
 
             <p className="hero__subtext hero-anim-3">
-              Health Vault Plus checks your claim documents before submission —
-              catching coverage gaps, missing paperwork, and errors upfront so
-              you walk away with every rupee you're entitled to.
+              Health Vault Plus reviews claim documents before submission,
+              identifying missing information, documentation gaps, and
+              errors—helping your team reduce rejections and ensure accurate
+              claim payouts.
             </p>
 
             <div className="hero__cta-row hero-anim-4">
@@ -32,7 +33,9 @@ export default function Hero() {
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
               />
               <Button
@@ -41,7 +44,9 @@ export default function Hero() {
                 href="#how-it-works"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  document
+                    .getElementById("how-it-works")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
               />
             </div>
@@ -60,7 +65,15 @@ export default function Hero() {
 
               {/* Checklist Rows */}
               <div className="mockup-card__row">
-                <svg className="mockup-card__row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  className="mockup-card__row-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                   <polyline points="14 2 14 8 20 8" />
                   <line x1="16" y1="13" x2="8" y2="13" />
@@ -72,7 +85,15 @@ export default function Hero() {
               </div>
 
               <div className="mockup-card__row">
-                <svg className="mockup-card__row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  className="mockup-card__row-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                   <polyline points="14 2 14 8 20 8" />
                   <line x1="16" y1="13" x2="8" y2="13" />
@@ -84,7 +105,15 @@ export default function Hero() {
               </div>
 
               <div className="mockup-card__row">
-                <svg className="mockup-card__row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  className="mockup-card__row-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                   <polyline points="14 2 14 8 20 8" />
                   <line x1="16" y1="13" x2="8" y2="13" />
@@ -99,7 +128,9 @@ export default function Hero() {
 
               {/* Footer */}
               <div className="mockup-card__footer">
-                <span className="mockup-card__footer-text">1 issue to fix before filing</span>
+                <span className="mockup-card__footer-text">
+                  1 issue to fix before filing
+                </span>
                 <span className="dot-loader">
                   <span />
                   <span />
