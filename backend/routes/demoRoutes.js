@@ -9,7 +9,6 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 5,
   message: { success: false, error: 'Too many requests. Please try again later.' },
-  keyGenerator: (req) => req.ip,
   skip: () => process.env.NODE_ENV === 'test',
 });
 

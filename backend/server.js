@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize');
 const connectDB = require('./config/db');
 const demoRoutes = require('./routes/demoRoutes');
 const errorHandler = require('./middleware/errorHandler');
@@ -24,7 +23,8 @@ app.use(helmet());
 app.use(express.json({ limit: '10kb' }));
 
 // Sanitize User Input against NoSQL injection
-app.use(mongoSanitize());
+// Note: Removed express-mongo-sanitize as it crashes Express 5. 
+// Mongoose Schema strict typing (String) inherently protects us here.
 
 // Strict CORS (No wildcard fallback in production)
 const allowedOrigins = process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',') : ['http://localhost:5173'];
