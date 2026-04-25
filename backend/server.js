@@ -2,20 +2,43 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
 const connectDB = require('./config/db');
 const demoRoutes = require('./routes/demoRoutes');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
+
+// Trust proxy if behind a reverse proxy (e.g., Vercel, Render)
+// Required for secure rate limiting based on client IP
+app.set('trust proxy', 1);
+
 const PORT = process.env.PORT || 5000;
 
 // ---- Middleware ----
+// Security Headers
+app.use(helmet());
+
+// Restrict Payload Size to 10kb
+app.use(express.json({ limit: '10kb' }));
+
+// Sanitize User Input against NoSQL injection
+app.use(mongoSanitize());
+
+// Strict CORS (No wildcard fallback in production)
+const allowedOrigins = process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',') : ['http://localhost:5173'];
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST'],
   credentials: true,
 }));
-app.use(express.json());
 
 // ---- Routes ----
 app.use('/api', demoRoutes);

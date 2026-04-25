@@ -11,6 +11,7 @@ const demoRequestSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Email is required'],
       trim: true,
+       unique: true,
       lowercase: true,
       match: [
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/,

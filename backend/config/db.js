@@ -13,7 +13,10 @@ const connectDB = async () => {
   }
 
   try {
-    const conn = await mongoose.connect(uri);
+    const options = process.env.NODE_ENV === 'production' 
+      ? { tls: true, tlsAllowInvalidCertificates: false } 
+      : {};
+    const conn = await mongoose.connect(uri, options);
     console.log(`✅ MongoDB connected: ${conn.connection.host}`);
     return conn;
   } catch (error) {
