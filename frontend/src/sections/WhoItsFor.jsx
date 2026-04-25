@@ -34,10 +34,10 @@ const CARDS = [
   {
     variant: 'primary',
     badge: 'Primary Audience',
-    icon: <UsersIcon />,
-    title: 'Policyholders & Patients',
+    icon: <BuildingIcon/>,
+    title: 'Hospitals & Treating Facilities',
     bullets: [
-      'Know exactly where you stand before filing your claim',
+      'Help patients get cashless approval faster with fewer back-and-forths',
       'Avoid rejections caused by missing or incorrect documentation',
       'Ensure every entitled amount is captured in your pre-auth',
       'Walk into every claim fully prepared with zero guesswork',
@@ -45,22 +45,12 @@ const CARDS = [
   },
   {
     variant: 'secondary',
-    icon: <BuildingIcon />,
-    title: 'Hospitals & Treating Facilities',
+    icon: <UsersIcon />,
+    title: 'Policyholders & Patients',
     bullets: [
-      'Help patients get cashless approval faster with fewer back-and-forths',
+      'Know exactly where you stand before filing your claim',
       'Catch pre-auth issues before submission, not after rejection',
       'Reduce delays caused by incomplete or mismatched documentation',
-    ],
-  },
-  {
-    variant: 'secondary',
-    icon: <ActivityIcon />,
-    title: 'Insurance Advisors & Agents',
-    bullets: [
-      'Add real value to clients at the most critical moment — claim time',
-      'Catch coverage gaps before they become disputes or shortfalls',
-      'Build client trust by ensuring zero claim surprises',
     ],
   },
 ];

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
+import logo from '../assets/logo.png';
 
 const NAV_LINKS = [
   { label: 'What We Do', target: 'what-we-do' },
@@ -35,11 +36,7 @@ export default function Nav({ activeSection }) {
         <div className="nav__inner">
           {/* Logo */}
           <a href="#" className="nav__logo" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-            {/* Placeholder for user's logo — replace the SVG below with your own logo */}
-            <svg className="nav__logo-mark" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 2L25.66 8.5V21.5L14 28L2.34 21.5V8.5L14 2Z" fill="#1B3F7A"/>
-              <path d="M14 8L10 14H13V20L18 14H15V8Z" fill="white"/>
-            </svg>
+            <img src={logo} alt="Health Vault Plus Logo" className="nav__logo-mark" style={{ height: '28px', width: 'auto' }} />
             <span className="nav__logo-text">Health Vault Plus</span>
           </a>
 

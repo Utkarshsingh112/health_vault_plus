@@ -52,90 +52,87 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column — Mockup Card */}
+          {/* Right Column — Claims Validation Card */}
           <div className="hero__right">
-            <div className="mockup-card hero-anim-card">
+            <div className="mockup-card hero-anim-card cvc">
               {/* Header */}
               <div className="mockup-card__header">
-                <span className="mockup-card__claim-id">Pre-Auth #PA-0042</span>
-                <Badge label="Check Complete" variant="success" />
+                <span className="mockup-card__claim-id">
+                  <span className="cvc__badge-dot" />
+                  NHCX · FHIR · ABDM
+                </span>
+                <Badge label="Live Scan" variant="success" />
               </div>
 
               <div className="mockup-card__divider" />
 
-              {/* Checklist Rows */}
-              <div className="mockup-card__row">
-                <svg
-                  className="mockup-card__row-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <line x1="16" y1="13" x2="8" y2="13" />
-                  <line x1="16" y1="17" x2="8" y2="17" />
-                  <polyline points="10 9 9 9 8 9" />
-                </svg>
-                <span className="mockup-card__row-label">Policy Coverage</span>
-                <Badge label="Verified" variant="success" />
-              </div>
-
-              <div className="mockup-card__row">
-                <svg
-                  className="mockup-card__row-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <line x1="16" y1="13" x2="8" y2="13" />
-                  <line x1="16" y1="17" x2="8" y2="17" />
-                  <polyline points="10 9 9 9 8 9" />
-                </svg>
-                <span className="mockup-card__row-label">Document Set</span>
-                <Badge label="Complete" variant="success" />
-              </div>
-
-              <div className="mockup-card__row">
-                <svg
-                  className="mockup-card__row-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <line x1="16" y1="13" x2="8" y2="13" />
-                  <line x1="16" y1="17" x2="8" y2="17" />
-                  <polyline points="10 9 9 9 8 9" />
-                </svg>
-                <span className="mockup-card__row-label">Medical Codes</span>
-                <Badge label="Flagged" variant="warning" />
-              </div>
+              {/* Steps */}
+              <ol className="cvc__steps">
+                {[
+                  {
+                    num: "✓",
+                    state: "done",
+                    title: "Patient data fetched",
+                    detail: "ABHA ID pulls records & policy instantly.",
+                    tag: null,
+                  },
+                  {
+                    num: "✓",
+                    state: "done",
+                    title: "Claim auto-filled & coded",
+                    detail: "ICD-10, SNOMED — suggested automatically.",
+                    tag: { label: "FHIR-compliant", variant: "default" },
+                  },
+                  {
+                    num: "3",
+                    state: "active",
+                    title: "Errors detected & corrected",
+                    detail:
+                      "Missing modifiers, wrong codes — fixed before send.",
+                    tag: null,
+                  },
+                  {
+                    num: "4",
+                    state: "idle",
+                    title: "One click to NHCX",
+                    detail:
+                      "Reviewer confirms. Submitted straight to exchange.",
+                    tag: { label: "Straight to NHCX ✓", variant: "success" },
+                  },
+                ].map((step, i) => (
+                  <li key={i} className={`cvc__step cvc__step--${step.state}`}>
+                    <div className="cvc__step-num">{step.num}</div>
+                    <div className="cvc__step-body">
+                      <p className="cvc__step-title">{step.title}</p>
+                      <p className="cvc__step-detail">{step.detail}</p>
+                      {step.tag && (
+                        <span
+                          className={`cvc__step-tag cvc__step-tag--${step.tag.variant}`}
+                        >
+                          {step.tag.label}
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ol>
 
               <div className="mockup-card__divider" />
 
-              {/* Footer */}
-              <div className="mockup-card__footer">
-                <span className="mockup-card__footer-text">
-                  1 issue to fix before filing
-                </span>
-                <span className="dot-loader">
-                  <span />
-                  <span />
-                  <span />
-                </span>
+              {/* Stats footer */}
+              <div className="cvc__stats">
+                {[
+                  { value: "70%", label: "fewer rejections", color: "warn" },
+                  { value: "₹15", label: "cost per claim", color: "blue" },
+                  { value: "10-15min", label: "processing time", color: "green" },
+                ].map((s, i) => (
+                  <div key={i} className="cvc__stat">
+                    <span className={`cvc__stat-val cvc__stat-val--${s.color}`}>
+                      {s.value}
+                    </span>
+                    <span className="cvc__stat-label">{s.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../assets/logo.png';
 
 export default function Footer() {
   return (
@@ -6,11 +7,7 @@ export default function Footer() {
       <div className="footer__inner">
         {/* Left — Logo */}
         <div className="footer__logo">
-          {/* Placeholder for user's logo — replace with your own */}
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 2L25.66 8.5V21.5L14 28L2.34 21.5V8.5L14 2Z" fill="#FFFFFF" opacity="0.9"/>
-            <path d="M14 8L10 14H13V20L18 14H15V8Z" fill="#1B3F7A"/>
-          </svg>
+          <img src={logo} alt="Health Vault Plus Logo" style={{ height: '28px', width: 'auto' }} />
           <span className="footer__logo-text">Health Vault Plus</span>
         </div>
 
