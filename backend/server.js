@@ -27,16 +27,19 @@ app.use(express.json({ limit: '10kb' }));
 // Mongoose Schema strict typing (String) inherently protects us here.
 
 // Strict CORS (No wildcard fallback in production)
-const allowedOrigins = process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',') : ['http://localhost:5173'];
+const allowedOrigins = process.env.CLIENT_URL 
+  ? process.env.CLIENT_URL.split(',').map(url => url.trim().replace(/\/$/, '')) 
+  : ['http://localhost:5173'];
+
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(null, false);
     }
   },
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 }));
 
