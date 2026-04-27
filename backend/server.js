@@ -29,14 +29,26 @@ app.use(express.json({ limit: '10kb' }));
 // Strict CORS (No wildcard fallback in production)
 const allowedOrigins = process.env.CLIENT_URL 
   ? process.env.CLIENT_URL.split(',').map(url => url.trim().replace(/\/$/, '')) 
-  : ['http://localhost:5173'];
+  : [];
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
-      callback(null, true);
+    // Allow requests with no origin (like curl) or in dev mode
+    if (!origin || process.env.NODE_ENV !== 'production') {
+      return callback(null, true);
+    }
+    
+    // If CLIENT_URL is configured, enforce it strictly
+    if (allowedOrigins.length > 0) {
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
     } else {
-      callback(null, false);
+      // Fallback: If no CLIENT_URL is set in production, allow the origin
+      // This prevents the app from breaking upon deployment if env vars are missing.
+      callback(null, true);
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],

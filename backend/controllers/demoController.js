@@ -41,11 +41,9 @@ const createDemoRequest = async (req, res, next) => {
     if (mongoose.connection.readyState !== 1) {
       console.log(`📧 Demo request received (not saved — no DB): ${sanitized.email}`);
 
-      try {
-        await sendAdminNotification(sanitized);
-      } catch (emailErr) {
+      sendAdminNotification(sanitized).catch((emailErr) => {
         console.error("Non-fatal: Email notification failed", emailErr.message);
-      }
+      });
 
       return res.status(200).json({
         success: true,
@@ -58,15 +56,13 @@ const createDemoRequest = async (req, res, next) => {
     const demoRequest = await DemoRequest.create(sanitized);
 
     console.log(
-      ` Demo request saved — ID: ${demoRequest._id} | Email: ${demoRequest.email}`
+      ` Demo request saved sucessfully| Email: ${demoRequest.email}`
     );
 
     //  Send email (non-blocking)
-    try {
-      await sendAdminNotification(sanitized);
-    } catch (emailErr) {
+    sendAdminNotification(sanitized).catch((emailErr) => {
       console.error("Non-fatal: Email notification failed", emailErr.message);
-    }
+    });
 
     return res.status(201).json({
       success: true,
