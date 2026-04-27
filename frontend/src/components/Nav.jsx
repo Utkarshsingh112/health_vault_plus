@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
-import logo from '../assets/logo.png';
+import logo_nav from '../assets/logo-nav.png';
 
 const NAV_LINKS = [
   { label: 'What We Do', target: 'what-we-do' },
@@ -36,7 +36,7 @@ export default function Nav({ activeSection }) {
         <div className="nav__inner">
           {/* Logo */}
           <a href="#" className="nav__logo" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-            <img src={logo} alt="Health Vault Plus Logo" className="nav__logo-mark" style={{ height: '28px', width: 'auto' }} />
+            <img src={logo_nav} alt="Health Vault Plus Logo" className="nav__logo-image" />
             <span className="nav__logo-text">Health Vault Plus</span>
           </a>
 

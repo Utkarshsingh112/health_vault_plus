@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/logo.png';
+import logo_footer from '../assets/logo-footer.png';
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="footer__inner">
         {/* Left — Logo */}
         <div className="footer__logo">
-          <img src={logo} alt="Health Vault Plus Logo" style={{ height: '28px', width: 'auto' }} />
+          <img src={logo_footer} alt="Health Vault Plus Logo" style={{ height: '32px', width: '32px', borderRadius: '8px', objectFit: 'cover' }} />
           <span className="footer__logo-text">Health Vault Plus</span>
         </div>
 
