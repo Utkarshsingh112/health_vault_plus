@@ -33,38 +33,37 @@ const ActivityIcon = () => (
 const CARDS = [
   {
     variant: 'primary',
-    badge: 'Primary Audience',
+    badge: 'Primary Users',
     icon: <BuildingIcon/>,
-    title: 'Hospitals & Treating Facilities',
+    title: 'Hospitals & Clinics',
     bullets: [
-      'Help patients get cashless approval faster with fewer back-and-forths',
-      'Avoid rejections caused by missing or incorrect documentation',
-      'Ensure every entitled amount is captured in your pre-auth',
-      'Walk into every claim fully prepared with zero guesswork',
+      'Stop typing the same patient information over and over',
+      'Catch mistakes before the claim is rejected',
+      'Get paid faster with clean, accurate claims',
     ],
   },
   {
     variant: 'secondary',
     icon: <UsersIcon />,
-    title: 'Policyholders & Patients',
+    title: 'Patient & Policy Holder',
     bullets: [
-      'Know exactly where you stand before filing your claim',
-      'Catch pre-auth issues before submission, not after rejection',
-      'Reduce delays caused by incomplete or mismatched documentation',
+      'Receive clean, standard claims from any TPA',
+      'Spend less time reading messy  notes',
+      'Communicate easily with insurance companies',
     ],
   },
 ];
 
 export default function WhoItsFor() {
   return (
-    <section className="who-its-for section" id="who-its-for">
+    <section className="who-its-for section" id="target-customers">
       <div className="container">
         <SectionHeader
-          label="Who It's For"
-          title="Built for everyone who wants their claim to go through."
+          label="Who We Help"
+          title="Making Life Easier for Everyone"
           align="center"
         />
-        <div className="who-its-for__grid">
+        <div className="who-its-for__grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
           {CARDS.map((card, i) => (
             <AudienceCard
               key={i}

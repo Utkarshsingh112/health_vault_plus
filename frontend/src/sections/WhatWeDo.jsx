@@ -38,34 +38,35 @@ const ZapIcon = () => (
 const FEATURES = [
   {
     icon: <FileTextIcon />,
-    title: 'Reads All Your Documents',
-    description: 'Policy, lab reports, prescriptions, discharge summaries — we process PDFs, images, and scanned files to build a complete picture of your claim.',
+    title: 'Too Much Manual Typing',
+    description: 'Staff spend hours copying patient data into complex insurance portals, leading to human errors and delays.',
   },
   {
     icon: <LayoutIcon />,
-    title: 'Verifies Policy Coverage',
-    description: 'We cross-check your diagnosis, treatment, and procedures against your policy terms to confirm exactly what is covered before you file.',
+    title: 'Messy Medical Records',
+    description: 'Hospitals have paperwork in many formats (PDFs, handwritten notes, images) that old systems cannot easily read.',
   },
   {
     icon: <AlertCircleIcon />,
-    title: 'Flags Issues Before They Cost You',
-    description: 'Missing documents, mismatched codes, and coverage gaps are surfaced upfront — giving you the chance to fix them before a rejection happens.',
+    title: 'Rejected Claims & Lost Money',
+    description: 'Missing codes and incomplete forms are the leading causes of claim rejections and payment delays.',
   },
   {
     icon: <ZapIcon />,
-    title: 'Maximizes Your Payout',
-    description: 'Nothing slips through. Every entitled amount is accounted for in your pre-auth readiness report so you walk in fully prepared.',
+    title: 'Keeping Up With New Rules',
+    description: 'Adapting to new government health rules requires a lot of expensive IT work for unprepared hospitals.',
   },
 ];
 
+
 export default function WhatWeDo() {
   return (
-    <section className="what-we-do section" id="what-we-do">
+    <section className="problem section" id="problem">
       <div className="container">
         <SectionHeader
-          label="What We Do"
-          title="Everything checked. Before you file."
-          subtext="We analyze your documents against your policy to catch every issue before it turns into a rejected or reduced claim."
+          label="The Problem"
+          title="Healthcare Claims Are Too Complicated"
+          subtext="Even with computers, hospitals and insurance companies are slowed down by manual paperwork that costs them time and money."
           align="center"
         />
         <div className="what-we-do__grid">

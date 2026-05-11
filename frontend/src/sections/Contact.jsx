@@ -46,11 +46,10 @@ export default function Contact() {
             align="center"
           />
 
-          <h2 className="contact__headline">See it in action.</h2>
+          <h2 className="contact__headline">Ready to Make Claims Easier?</h2>
 
           <p className="contact__subtext">
-            We'll walk you through exactly how Health Vault Plus works for your
-            team.Just a live walkthrough.
+            Request a personalized walkthrough to see how Health Vault Plus can save your hospital time and money.
           </p>
 
           <form className="contact__form" onSubmit={handleSubmit}>

@@ -2,7 +2,9 @@ import React from 'react';
 import Nav from './components/Nav';
 import Hero from './sections/Hero';
 import WhatWeDo from './sections/WhatWeDo';
-import HowItWorks from './sections/HowItWorks';
+import PlatformFeatures from './sections/PlatformFeatures';
+import WorkflowSteps from './sections/WorkflowSteps';
+import WhyDifferent from './sections/WhyDifferent';
 import WhoItsFor from './sections/WhoItsFor';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
@@ -20,7 +22,9 @@ export default function App() {
       <main>
         <Hero />
         <WhatWeDo />
-        <HowItWorks />
+        <PlatformFeatures />
+        <WorkflowSteps />
+        <WhyDifferent />
         <WhoItsFor />
         <Contact />
       </main>
