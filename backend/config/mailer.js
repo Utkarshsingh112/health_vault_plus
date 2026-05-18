@@ -88,4 +88,53 @@ const sendAdminNotification = async ({
   }
 };
 
-module.exports = { sendAdminNotification };
+/**
+ * Sends a confirmation email to the user who requested the demo/contact.
+ * @param {string} userEmail
+ * @param {string} userName
+ * @param {string} submissionType
+ */
+const sendUserConfirmation = async (userEmail, userName, submissionType = 'demo') => {
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    return;
+  }
+
+  const isContactRequest = submissionType === 'contact';
+  const subject = isContactRequest 
+    ? 'We received your contact request - Health Vault Plus'
+    : 'We received your demo request - Health Vault Plus';
+
+  const greetingName = userName ? userName.split(' ')[0] : 'there';
+  const intro = isContactRequest
+    ? 'Thank you for reaching out to Health Vault Plus. We have received your message and our support team will get back to you shortly.'
+    : 'Thank you for requesting a demo of Health Vault Plus. We have received your details and our team will reach out shortly to schedule a time.';
+
+  const mailOptions = {
+    from: `"Health Vault Plus" <${process.env.EMAIL_USER}>`,
+    to: userEmail,
+    subject,
+    html: `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+        <div style="background-color: #0b7285; color: #fff; padding: 20px; text-align: center;">
+          <h2 style="margin: 0;">Health Vault Plus</h2>
+        </div>
+        <div style="padding: 20px; background-color: #f8f9fa;">
+          <p style="font-size: 16px;">Hi ${greetingName},</p>
+          <p style="font-size: 16px;">${intro}</p>
+          <p style="font-size: 16px;">In the meantime, feel free to explore our <a href="${process.env.CLIENT_URL || 'https://healthvaultplus.com'}" style="color: #0b7285;">website</a> to learn more about our features.</p>
+          <p style="margin-top: 30px; font-size: 16px;">Best regards,<br>The Health Vault Plus Team</p>
+        </div>
+      </div>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`User confirmation email sent to: ${userEmail}`);
+  } catch (error) {
+    console.error('Failed to send user confirmation email:', error.message);
+    // Don't throw here to avoid blocking admin notification
+  }
+};
+
+module.exports = { sendAdminNotification, sendUserConfirmation };

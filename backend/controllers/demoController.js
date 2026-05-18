@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const DemoRequest = require('../models/DemoRequest');
 const { validateDemoRequest } = require('../validators/demoValidator');
-const { sendAdminNotification } = require('../config/mailer');
+const { sendAdminNotification, sendUserConfirmation } = require('../config/mailer');
 
 // In-memory dedup store
 const recentEmails = new Map(); // email -> timestamp
@@ -42,7 +42,10 @@ const createDemoRequest = async (req, res, next) => {
       console.log(`📧 Demo request received (not saved — no DB): ${sanitized.email}`);
 
       sendAdminNotification(sanitized).catch((emailErr) => {
-        console.error("Non-fatal: Email notification failed", emailErr.message);
+        console.error("Non-fatal: Admin email notification failed", emailErr.message);
+      });
+      sendUserConfirmation(sanitized.email, sanitized.name, sanitized.submissionType).catch((emailErr) => {
+        console.error("Non-fatal: User email confirmation failed", emailErr.message);
       });
 
       return res.status(200).json({
@@ -61,7 +64,10 @@ const createDemoRequest = async (req, res, next) => {
 
     //  Send email (non-blocking)
     sendAdminNotification(sanitized).catch((emailErr) => {
-      console.error("Non-fatal: Email notification failed", emailErr.message);
+      console.error("Non-fatal: Admin email notification failed", emailErr.message);
+    });
+    sendUserConfirmation(sanitized.email, sanitized.name, sanitized.submissionType).catch((emailErr) => {
+      console.error("Non-fatal: User email confirmation failed", emailErr.message);
     });
 
     return res.status(201).json({
