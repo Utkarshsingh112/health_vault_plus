@@ -1,84 +1,53 @@
 import React from 'react';
 import SectionHeader from '../components/SectionHeader';
-import FeatureCard from '../components/FeatureCard';
-
-// Inline simple step icons (numbers)
-const StepIcon = ({ num }) => (
-  <div style={{
-    width: '24px',
-    height: '24px',
-    borderRadius: '50%',
-    background: 'var(--accent-light)',
-    color: 'var(--accent)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '12px',
-    fontWeight: 'bold',
-    fontFamily: 'var(--font-heading)'
-  }}>
-    {num}
-  </div>
-);
-
-const STEPS = [
-  {
-    icon: <StepIcon num="1" />,
-    title: 'Get Patient Info',
-    description: 'Quickly find patient details and insurance policy information using their health ID.',
-  },
-  {
-    icon: <StepIcon num="2" />,
-    title: 'Read Scanned Files',
-    description: 'Automatically read text from paper documents, lab reports, and doctor notes.',
-  },
-  {
-    icon: <StepIcon num="3" />,
-    title: 'Find Key Medical Details',
-    description: 'Identify the main diseases, treatments, and medicines from the doctors written notes.',
-  },
-  {
-    icon: <StepIcon num="4" />,
-    title: 'Match With Medical Codes',
-    description: 'Translate the found details into standard billing codes automatically.',
-  },
-  {
-    icon: <StepIcon num="5" />,
-    title: 'Check For Errors',
-    description: 'Compare the codes against the insurance rules to catch mistakes before sending.',
-  },
-  {
-    icon: <StepIcon num="6" />,
-    title: 'Package the Claim',
-    description: 'Bundle all the correct information into the exact format required by the government.',
-  },
-  {
-    icon: <StepIcon num="7" />,
-    title: 'Send to Insurance',
-    description: 'Submit the clean, error-free claim directly to the insurance network with one click.',
-  },
-];
 
 export default function WorkflowSteps() {
   return (
-    <section className="problem section" id="workflow">
+    <section className="workflow section" id="abdm-milestones" style={{ background: '#ffffff', padding: '100px 0' }}>
       <div className="container">
         <SectionHeader
-          label="Workflow Steps"
-          title="From Patient Record to Payment"
-          subtext="A fully automated system that turns messy paperwork into clean, ready-to-pay claims."
+          title="ABDM Milestones"
           align="center"
         />
-        <div className="what-we-do__grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
-          {STEPS.map((step, i) => (
-            <FeatureCard
-              key={i}
-              icon={step.icon}
-              title={step.title}
-              description={step.description}
-              delay={i * 60}
-            />
-          ))}
+        
+        <div style={{ display: 'flex', alignItems: 'flex-start', marginTop: '80px', gap: '60px', flexWrap: 'wrap' }}>
+          
+          {/* Timeline Container */}
+          <div style={{ flex: '1 1 60%', position: 'relative', display: 'flex', justifyContent: 'space-between', minWidth: '600px' }}>
+            {/* Horizontal Line */}
+            <div style={{ position: 'absolute', top: '24px', left: '10%', right: '10%', height: '4px', background: '#E4E8F0', zIndex: 0 }}></div>
+
+            {/* M1 */}
+            <div style={{ position: 'relative', zIndex: 1, width: '30%' }}>
+              <div style={{ width: '52px', height: '52px', borderRadius: '50%', border: '4px solid #E4E8F0', color: 'var(--text-body)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '600', fontSize: '18px', margin: '0 auto 24px', backgroundColor: '#fff' }}>M1</div>
+              <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '18px', color: 'var(--text-primary)', marginBottom: '12px', textAlign: 'center', fontWeight: '600' }}>Foundational</h4>
+              <p style={{ fontSize: '15px', color: 'var(--text-body)', lineHeight: '1.6', textAlign: 'center' }}>ABHA creation & verification. Secure API connectivity.</p>
+            </div>
+
+            {/* M2 */}
+            <div style={{ position: 'relative', zIndex: 1, width: '30%' }}>
+              <div style={{ width: '52px', height: '52px', borderRadius: '50%', border: '4px solid #E4E8F0', color: 'var(--text-body)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '600', fontSize: '18px', margin: '0 auto 24px', backgroundColor: '#fff' }}>M2</div>
+              <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '18px', color: 'var(--text-primary)', marginBottom: '12px', textAlign: 'center', fontWeight: '600' }}>Record Exchange</h4>
+              <p style={{ fontSize: '15px', color: 'var(--text-body)', lineHeight: '1.6', textAlign: 'center' }}>Consent-based FHIR R4 data sharing. Document exchange.</p>
+            </div>
+
+            {/* M3 */}
+            <div style={{ position: 'relative', zIndex: 1, width: '30%' }}>
+              <div style={{ width: '52px', height: '52px', borderRadius: '50%', background: 'var(--accent)', border: '4px solid var(--accent)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '600', fontSize: '18px', margin: '0 auto 24px', boxShadow: '0 0 0 6px rgba(46,124,246,0.1)' }}>M3</div>
+              <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '18px', color: 'var(--accent)', marginBottom: '12px', textAlign: 'center', fontWeight: '600' }}>NHCX Ready</h4>
+              <p style={{ fontSize: '15px', color: 'var(--text-body)', lineHeight: '1.6', textAlign: 'center' }}>Production-grade certification for claims interoperability.</p>
+            </div>
+          </div>
+
+          {/* Callout Box */}
+          <div style={{ flex: '1 1 30%', background: '#F8FAFC', padding: '40px', borderRadius: '16px', border: '1px solid #E4E8F0', boxShadow: '0 10px 40px -10px rgba(0,0,0,0.05)', minWidth: '300px' }}>
+            <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: '600', color: 'var(--accent)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+               NHCX Readiness
+            </h4>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'var(--text-body)', lineHeight: '1.8' }}>We are fully capable of processing claims directly to NHCX through our integrated software gateway, eliminating manual workflows completely.</p>
+          </div>
+
         </div>
       </div>
     </section>

@@ -11,15 +11,15 @@ export default function Hero() {
           <div className="hero__left">
             <div className="hero__eyebrow hero-anim-1">
               <span className="hero__eyebrow-dot" />
-              <span>Pre-Authorization Intelligence</span>
+              <span>NHCX & ABDM Compliant</span>
             </div>
 
             <h1 className="hero__headline hero-anim-2">
-              Make Hospital Claims <span className="accent">Fast</span>, Easy, and Error-Free
+              <span className="accent">PMJAY</span> Integrated Hospital Software
             </h1>
 
             <p className="hero__subtext hero-anim-3">
-              Health Vault Plus helps hospitals and insurance providers process claims smoothly with secure, smart software designed for Indian healthcare.
+              Automate your insurance workflows with our ABDM-certified platform. Connect directly to NHCX and seamlessly process PMJAY claims without manual entry.
             </p>
 
             <div className="hero__cta-row hero-anim-4">
@@ -48,7 +48,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column — Claims Validation Card */}
+          {/* Right Column — Claims Validation Card (Mockup UI) */}
           <div className="hero__right">
             <div className="mockup-card hero-anim-card cvc">
               {/* Header */}

@@ -1,84 +1,54 @@
 import React from 'react';
 import SectionHeader from '../components/SectionHeader';
-import FeatureCard from '../components/FeatureCard';
 
-// Inline SVG icons (feather-style)
-const FileTextIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-    <polyline points="14 2 14 8 20 8" />
-    <line x1="16" y1="13" x2="8" y2="13" />
-    <line x1="16" y1="17" x2="8" y2="17" />
-    <polyline points="10 9 9 9 8 9" />
+const PMJAYIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
   </svg>
 );
 
-const LayoutIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-    <line x1="3" y1="9" x2="21" y2="9" />
-    <line x1="9" y1="21" x2="9" y2="9" />
+const NHCXIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="3" />
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
   </svg>
 );
-
-const AlertCircleIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <line x1="12" y1="8" x2="12" y2="12" />
-    <line x1="12" y1="16" x2="12.01" y2="16" />
-  </svg>
-);
-
-const ZapIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-  </svg>
-);
-
-const FEATURES = [
-  {
-    icon: <FileTextIcon />,
-    title: 'Too Much Manual Typing',
-    description: 'Staff spend hours copying patient data into complex insurance portals, leading to human errors and delays.',
-  },
-  {
-    icon: <LayoutIcon />,
-    title: 'Messy Medical Records',
-    description: 'Hospitals have paperwork in many formats (PDFs, handwritten notes, images) that old systems cannot easily read.',
-  },
-  {
-    icon: <AlertCircleIcon />,
-    title: 'Rejected Claims & Lost Money',
-    description: 'Missing codes and incomplete forms are the leading causes of claim rejections and payment delays.',
-  },
-  {
-    icon: <ZapIcon />,
-    title: 'Keeping Up With New Rules',
-    description: 'Adapting to new government health rules requires a lot of expensive IT work for unprepared hospitals.',
-  },
-];
-
 
 export default function WhatWeDo() {
   return (
-    <section className="problem section" id="problem">
+    <section className="what-we-do section" id="about-pmjay" style={{ background: '#fdfaf4' }}>
       <div className="container">
         <SectionHeader
-          label="The Problem"
-          title="Healthcare Claims Are Too Complicated"
-          subtext="Even with computers, hospitals and insurance companies are slowed down by manual paperwork that costs them time and money."
+          title="What is PMJAY & NHCX?"
           align="center"
         />
-        <div className="what-we-do__grid">
-          {FEATURES.map((feature, i) => (
-            <FeatureCard
-              key={i}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-              delay={i * 80}
-            />
-          ))}
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '64px', marginTop: '64px' }}>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div style={{ width: '56px', height: '56px', background: 'var(--accent)', color: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <PMJAYIcon />
+            </div>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', fontWeight: '600', color: 'var(--text-primary)' }}>
+              Pradhan Mantri Jan Arogya Yojana
+            </h3>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'var(--text-body)', lineHeight: '1.8' }}>
+              PMJAY is India's largest government-funded health insurance scheme, offering ₹5 lakh coverage per eligible family per year. Hospitals handle high volumes of insurance claims, pre-authorizations, and documentation — traditionally processed manually or through separate portals.
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div style={{ width: '56px', height: '56px', background: 'var(--accent)', color: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <NHCXIcon />
+            </div>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', fontWeight: '600', color: 'var(--text-primary)' }}>
+              National Health Claims Exchange
+            </h3>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'var(--text-body)', lineHeight: '1.8' }}>
+              NHCX is a standardized digital claims exchange platform. Through NHCX, hospital software can directly exchange insurance eligibility requests, pre-authorization submissions, and claim documents in real-time, eliminating the need for manual portal uploads.
+            </p>
+          </div>
+
         </div>
       </div>
     </section>

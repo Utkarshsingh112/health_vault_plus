@@ -65,7 +65,7 @@ export default function PlatformFeatures() {
           subtext="We replace manual typing with a smart system that gets every claim ready for quick approval."
           align="center"
         />
-        <div className="what-we-do__grid">
+        <div className="what-we-do__grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px' }}>
           {FEATURES.map((feature, i) => (
             <FeatureCard
               key={i}

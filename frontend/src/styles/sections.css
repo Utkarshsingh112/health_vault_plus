@@ -5,11 +5,12 @@
 /* ---- Hero ---- */
 .hero {
   min-height: 100vh;
-  background: var(--background);
-  background-image: radial-gradient(ellipse 60% 50% at 90% 10%, #EEF4FF 0%, transparent 60%);
+  background-color: #FDFDFD;
   display: flex;
   align-items: center;
   padding-top: var(--nav-height);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero__inner {
