@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { API_URL } from "../config/api";
 
 const faqs = [
   {
@@ -55,7 +56,6 @@ export default function HelpWidget() {
     e.preventDefault();
     setLoading(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
       const res = await fetch(`${API_URL}/api/demo-request`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

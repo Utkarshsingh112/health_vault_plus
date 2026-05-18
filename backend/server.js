@@ -27,9 +27,20 @@ app.use(express.json({ limit: '10kb' }));
 // Mongoose Schema strict typing (String) inherently protects us here.
 
 // Strict CORS (No wildcard fallback in production)
-const allowedOrigins = process.env.CLIENT_URL 
-  ? process.env.CLIENT_URL.split(',').map(url => url.trim().replace(/\/$/, '')) 
+const normalizeOrigin = (url) => {
+  if (!url) return '';
+
+  const trimmed = url.trim().replace(/\/$/, '');
+  if (!trimmed) return '';
+
+  return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+};
+
+const configuredOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(',').map(normalizeOrigin).filter(Boolean)
   : [];
+
+const allowedOrigins = new Set(configuredOrigins);
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -38,17 +49,20 @@ app.use(cors({
       return callback(null, true);
     }
     
+    const normalizedOrigin = normalizeOrigin(origin);
+
     // If CLIENT_URL is configured, enforce it strictly
-    if (allowedOrigins.length > 0) {
-      if (allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
+    if (allowedOrigins.size > 0) {
+      if (allowedOrigins.has(normalizedOrigin)) {
+        return callback(null, true);
       } else {
-        callback(new Error('Not allowed by CORS'));
+        console.warn(`Blocked CORS origin: ${origin}`);
+        return callback(null, false);
       }
     } else {
       // Fallback: If no CLIENT_URL is set in production, allow the origin
       // This prevents the app from breaking upon deployment if env vars are missing.
-      callback(null, true);
+      return callback(null, true);
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],

@@ -25,6 +25,11 @@ CLIENT_URL=http://localhost:5173
 VITE_API_URL=http://localhost:5000
 ```
 
+For production builds, set this in your frontend host's environment variables:
+```
+VITE_API_URL=https://your-render-backend.onrender.com
+```
+
 ---
 
 ## Running Locally
@@ -71,7 +76,8 @@ The optimal path to hosting this stack without serverless complications is deplo
    - **Root Directory**: Click "Edit" and select the `frontend` folder.
    - Vercel will automatically detect `Vite`.
 4. Add your **Environment Variables**:
-   - `VITE_API_URL` = (Paste your Render Backend URL here — no trailing slash).
+   - `VITE_API_URL` = your Render backend URL (no trailing slash).
+   - The variable name must be exactly `VITE_API_URL`; Vite will not read `VIPI_API_URL`.
 5. **Deploy!** Once finished, copy your Vercel URL.
 
 ### 3. Connect the Two Securely
@@ -79,6 +85,8 @@ Currently, your strict backend security prevents unauthorized domains. Let's whi
 1. Return to your Render dashboard for the Backend.
 2. Edit your `CLIENT_URL` variable to include your Vercel frontend URL, as well as any custom domain name you own.
    - `CLIENT_URL = https://your-vercel.vercel.app,https://your-custom-godaddy.com`
+   - If both apex and `www` serve the frontend, include both URLs separated by commas.
+   - Include `https://`; browser origins include the protocol. The backend also normalizes bare domains, but explicit URLs are safer.
 3. Save the changes to restart the server.
 
 Your frontend and backend will now securely talk to each other in production!

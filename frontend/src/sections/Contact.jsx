@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import SectionHeader from '../components/SectionHeader';
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+import { API_URL } from '../config/api';
 
 export default function Contact() {
   const [email, setEmail] = useState('');
