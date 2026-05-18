@@ -1,14 +1,6 @@
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 /**
  * Sends an email notification to the admin about a new demo/contact request.
@@ -21,8 +13,8 @@ const sendAdminNotification = async ({
   query = '',
   submissionType = 'demo',
 }) => {
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.warn('Email credentials not set in .env. Skipping email notification.');
+  if (!process.env.RESEND_API_KEY || !process.env.ADMIN_EMAIL) {
+    console.warn('Resend credentials or Admin email not set. Skipping email notification.');
     return;
   }
 
@@ -46,13 +38,7 @@ const sendAdminNotification = async ({
             </tr>`
     : '';
 
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER,
-    subject: isContactRequest
-      ? 'New Contact Request - Health Vault Plus'
-      : 'New Demo Request - Health Vault Plus',
-    html: `
+  const htmlContent = `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
         <div style="background-color: #0b7285; color: #fff; padding: 20px; text-align: center;">
           <h2 style="margin: 0;">${isContactRequest ? 'New Contact Request' : 'New Demo Request'}</h2>
@@ -78,12 +64,21 @@ const sendAdminNotification = async ({
           </p>
         </div>
       </div>
-    `,
-  };
+  `;
 
   try {
-    await transporter.sendMail(mailOptions);
-    console.log(`Email notification sent for: ${email}`);
+    const { data: responseData, error } = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+      to: process.env.ADMIN_EMAIL,
+      subject: isContactRequest ? 'New Contact Request - Health Vault Plus' : 'New Demo Request - Health Vault Plus',
+      html: htmlContent,
+    });
+
+    if (error) {
+      console.error('Resend API error (Admin Notification):', error);
+      throw new Error(error.message);
+    }
+    console.log(`Email notification sent via Resend for: ${email}`);
   } catch (error) {
     console.error('Failed to send email notification:', error.message);
     throw error;
@@ -97,7 +92,7 @@ const sendAdminNotification = async ({
  * @param {string} submissionType
  */
 const sendUserConfirmation = async (userEmail, userName, submissionType = 'demo') => {
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+  if (!process.env.RESEND_API_KEY) {
     return;
   }
 
@@ -111,11 +106,7 @@ const sendUserConfirmation = async (userEmail, userName, submissionType = 'demo'
     ? 'Thank you for reaching out to Health Vault Plus. We have received your message and our support team will get back to you shortly.'
     : 'Thank you for requesting a demo of Health Vault Plus. We have received your details and our team will reach out shortly to schedule a time.';
 
-  const mailOptions = {
-    from: `"Health Vault Plus" <${process.env.EMAIL_USER}>`,
-    to: userEmail,
-    subject,
-    html: `
+  const htmlContent = `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
         <div style="background-color: #0b7285; color: #fff; padding: 20px; text-align: center;">
           <h2 style="margin: 0;">Health Vault Plus</h2>
@@ -127,15 +118,24 @@ const sendUserConfirmation = async (userEmail, userName, submissionType = 'demo'
           <p style="margin-top: 30px; font-size: 16px;">Best regards,<br>The Health Vault Plus Team</p>
         </div>
       </div>
-    `,
-  };
+  `;
 
   try {
-    await transporter.sendMail(mailOptions);
-    console.log(`User confirmation email sent to: ${userEmail}`);
+    const { data: responseData, error } = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+      to: userEmail,
+      subject,
+      html: htmlContent,
+    });
+
+    if (error) {
+      console.error('Resend API error (User Confirmation):', error);
+      // Don't throw here to avoid blocking admin notification
+      return;
+    }
+    console.log(`User confirmation email sent via Resend to: ${userEmail}`);
   } catch (error) {
     console.error('Failed to send user confirmation email:', error.message);
-    // Don't throw here to avoid blocking admin notification
   }
 };
 
