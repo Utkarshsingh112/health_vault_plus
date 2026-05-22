@@ -13,9 +13,12 @@ const connectDB = async () => {
   }
 
   try {
-    const options = process.env.NODE_ENV === 'production' 
-      ? { tls: true, tlsAllowInvalidCertificates: false } 
-      : {};
+    const options = {
+      serverSelectionTimeoutMS: 5000,
+      ...(process.env.NODE_ENV === 'production'
+        ? { tls: true, tlsAllowInvalidCertificates: false }
+        : {})
+    };
     const conn = await mongoose.connect(uri, options);
     console.log(`✅ MongoDB connected: ${conn.connection.host}`);
     return conn;

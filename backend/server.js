@@ -6,6 +6,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const connectDB = require('./config/db');
 const demoRoutes = require('./routes/demoRoutes');
+const supportRoutes = require('./routes/supportRoutes');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
@@ -72,6 +73,7 @@ app.use(cors({
 
 // ---- Routes ----
 app.use('/api', demoRoutes);
+app.use('/api', supportRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

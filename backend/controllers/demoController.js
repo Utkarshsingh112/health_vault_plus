@@ -9,7 +9,7 @@ const DUP_WINDOW = 10 * 60 * 1000; // 10 minutes
 
 /**
  * POST /api/demo-request
- * Creates a new demo request or help-widget contact request.
+ * Creates a new demo request.
  * Works gracefully even if MongoDB is not connected.
  */
 const createDemoRequest = async (req, res, next) => {
@@ -23,7 +23,7 @@ const createDemoRequest = async (req, res, next) => {
     const now = Date.now();
     const lastRequestTime = recentEmails.get(sanitized.email);
 
-    //  Duplicate check (works for both DB ON + OFF)
+    // Duplicate check (works for both DB ON + OFF)
     if (lastRequestTime && now - lastRequestTime < DUP_WINDOW) {
       return res.status(429).json({
         success: false,
@@ -37,14 +37,14 @@ const createDemoRequest = async (req, res, next) => {
       recentEmails.delete(sanitized.email);
     }, DUP_WINDOW);
 
-    //  DB DOWN CASE
+    // DB DOWN CASE
     if (mongoose.connection.readyState !== 1) {
       console.log(`📧 Demo request received (not saved — no DB): ${sanitized.email}`);
 
-      sendAdminNotification(sanitized).catch((emailErr) => {
+      sendAdminNotification({ email: sanitized.email, submissionType: 'demo' }).catch((emailErr) => {
         console.error("Non-fatal: Admin email notification failed", emailErr.message);
       });
-      sendUserConfirmation(sanitized.email, sanitized.name, sanitized.submissionType).catch((emailErr) => {
+      sendUserConfirmation(sanitized.email, '', 'demo').catch((emailErr) => {
         console.error("Non-fatal: User email confirmation failed", emailErr.message);
       });
 
@@ -55,18 +55,18 @@ const createDemoRequest = async (req, res, next) => {
       });
     }
 
-    //  Save to DB
+    // Save to DB
     const demoRequest = await DemoRequest.create(sanitized);
 
     console.log(
       ` Demo request saved sucessfully| Email: ${demoRequest.email}`
     );
 
-    //  Send email (non-blocking)
-    sendAdminNotification(sanitized).catch((emailErr) => {
+    // Send email (non-blocking)
+    sendAdminNotification({ email: sanitized.email, submissionType: 'demo' }).catch((emailErr) => {
       console.error("Non-fatal: Admin email notification failed", emailErr.message);
     });
-    sendUserConfirmation(sanitized.email, sanitized.name, sanitized.submissionType).catch((emailErr) => {
+    sendUserConfirmation(sanitized.email, '', 'demo').catch((emailErr) => {
       console.error("Non-fatal: User email confirmation failed", emailErr.message);
     });
 
@@ -77,7 +77,7 @@ const createDemoRequest = async (req, res, next) => {
     });
 
   } catch (err) {
-    //  Duplicate email (DB unique index)
+    // Duplicate email (DB unique index)
     if (err.code === 11000) {
       console.warn(`⚠️ Duplicate email attempt: ${req.body?.email}`);
 
