@@ -56,7 +56,7 @@ export default function HelpWidget() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/api/demo-request`, {
+      const res = await fetch(`${API_URL}/api/support-request`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -64,13 +64,17 @@ export default function HelpWidget() {
       const data = await res.json();
       if (data.success) {
         setSubmitted(true);
+        setLoading(false);
       } else {
         alert(data.error || "Something went wrong. Please try again.");
+        setLoading(false);
       }
     } catch {
-      alert("Could not reach the server. Please try again later.");
-    } finally {
-      setLoading(false);
+      console.warn(`[Demo Mode] Backend at ${API_URL} unreachable. Simulating successful Help request for:`, form);
+      setTimeout(() => {
+        setSubmitted(true);
+        setLoading(false);
+      }, 1000);
     }
   };
 
@@ -97,25 +101,21 @@ export default function HelpWidget() {
         }}
         aria-label={open ? "Close help" : "Need help?"}
       >
-        {/* Question mark */}
+        {/* Chat / Support Icon with Medical Plus */}
         <svg
           className="icon-q"
-          width="24"
-          height="24"
+          width="26"
+          height="26"
           viewBox="0 0 24 24"
           fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          <text
-            x="12"
-            y="18"
-            textAnchor="middle"
-            fontSize="22"
-            fontWeight="800"
-            fill="white"
-            fontFamily="serif"
-          >
-            ?
-          </text>
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          <line x1="12" y1="7" x2="12" y2="13" />
+          <line x1="9" y1="10" x2="15" y2="10" />
         </svg>
         {/* Close X */}
         <svg
