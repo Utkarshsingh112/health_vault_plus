@@ -15,9 +15,12 @@ To run the project locally, create two `.env` files in their respective director
 ```
 PORT=5000
 MONGO_URI=your-mongodb-atlas-string
-EMAIL_USER=your-email@gmail.com
-EMAIL_PASS=your-email-app-password
 CLIENT_URL=http://localhost:5173
+
+# Resend Email Configuration
+RESEND_API_KEY=re_your_resend_api_key
+RESEND_FROM_EMAIL=onboarding@resend.dev
+ADMIN_EMAIL=your-email@gmail.com
 ```
 
 ### Frontend (`/frontend/.env`)
@@ -65,7 +68,7 @@ The optimal path to hosting this stack without serverless complications is deplo
    - **Build Command**: `npm install`
    - **Start Command**: `npm start`
 4. Expand **Advanced** and add your **Environment Variables**:
-   - `MONGO_URI`, `EMAIL_USER`, `EMAIL_PASS`
+   - `MONGO_URI`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `ADMIN_EMAIL`
    - Set `CLIENT_URL` placeholder for now (we'll update this shortly).
 5. **Deploy!** Once live, copy your new secure Render URL (e.g. `https://health-backend.onrender.com`).
 

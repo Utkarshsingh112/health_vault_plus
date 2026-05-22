@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const SECTION_IDS = ['what-we-do', 'how-it-works', 'who-its-for', 'contact'];
+const SECTION_IDS = ['about-us', 'platform', 'workflow', 'contact'];
 
 /**
  * Tracks which section is currently in the viewport and returns its ID.

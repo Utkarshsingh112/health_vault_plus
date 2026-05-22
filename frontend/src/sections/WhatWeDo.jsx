@@ -16,10 +16,10 @@ const NHCXIcon = () => (
 
 export default function WhatWeDo() {
   return (
-    <section className="what-we-do section" id="about-pmjay" style={{ background: '#fdfaf4' }}>
+    <section className="what-we-do section" id="about-us" style={{ background: '#fdfaf4' }}>
       <div className="container">
         <SectionHeader
-          title="What is PMJAY & NHCX?"
+          title="Who We Are & What We Do"
           align="center"
         />
         
@@ -30,10 +30,10 @@ export default function WhatWeDo() {
               <PMJAYIcon />
             </div>
             <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', fontWeight: '600', color: 'var(--text-primary)' }}>
-              Pradhan Mantri Jan Arogya Yojana
+              Support for All Insurance Plans
             </h3>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'var(--text-body)', lineHeight: '1.8' }}>
-              PMJAY is India's largest government-funded health insurance scheme, offering ₹5 lakh coverage per eligible family per year. Hospitals handle high volumes of insurance claims, pre-authorizations, and documentation — traditionally processed manually or through separate portals.
+              Whether you are processing government health schemes (like PMJAY) or private corporate insurance, we handle the claims automatically. We eliminate the need to upload files manually to different portals, giving your team a single unified workflow.
             </p>
           </div>
 
@@ -42,10 +42,10 @@ export default function WhatWeDo() {
               <NHCXIcon />
             </div>
             <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', fontWeight: '600', color: 'var(--text-primary)' }}>
-              National Health Claims Exchange
+              Direct Connection to Insurance Networks
             </h3>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'var(--text-body)', lineHeight: '1.8' }}>
-              NHCX is a standardized digital claims exchange platform. Through NHCX, hospital software can directly exchange insurance eligibility requests, pre-authorization submissions, and claim documents in real-time, eliminating the need for manual portal uploads.
+              Instead of logging into multiple insurance portals and uploading documents manually, our platform connects you directly to the new national digital claims network. You can check eligibility, submit approvals, and send documents instantly.
             </p>
           </div>
 

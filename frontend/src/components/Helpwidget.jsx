@@ -4,23 +4,23 @@ import { API_URL } from "../config/api";
 const faqs = [
   {
     q: "What is Health Vault Plus?",
-    a: "Health Vault Plus is a pre-authorization intelligence tool. It checks your health insurance claim documents before you file — catching coverage gaps, missing paperwork, and code errors so you walk away with the maximum payout you're entitled to.",
+    a: "Health Vault Plus is a smart software assistant for hospitals that automates insurance claims. We help your billing team prepare, check, and submit claims instantly, reducing mistakes and getting you paid faster.",
   },
   {
-    q: "What does a pre-auth check actually do?",
-    a: "It validates everything before your claim is submitted — policy coverage, document completeness, and medical code accuracy. Instead of discovering problems after a rejection, you fix them upfront.",
+    q: "How does the system prevent mistakes?",
+    a: "It automatically scans claim details — like patient information and medical codes — before sending. It flags missing paperwork or mismatched codes so you can fix them upfront and avoid rejections.",
   },
   {
     q: "Who is this built for?",
-    a: "Policyholders who want their claim to go through without shortfalls, hospitals helping patients secure cashless approval, and insurance advisors ensuring clients receive every rupee they're entitled to.",
+    a: "It's built for hospitals, clinics, and billing teams who want to speed up insurance approvals, reduce manual entry, and eliminate claim rejection headaches.",
   },
   {
-    q: "Will my claim definitely get approved?",
-    a: "We can't guarantee approval — only the insurer decides that. But we make sure that from your side, everything is correct, complete, and in order before you file, giving you the strongest possible position.",
+    q: "Will this guarantee claim approval?",
+    a: "Only the insurance company can approve a claim, but we make sure all documentation is complete and accurate from your side, giving you the best possible chance of immediate approval.",
   },
   {
     q: "How do I get started?",
-    a: "Fill out the contact form and our team will reach out within 24 hours to walk you through how Health Vault Plus works for your specific case.",
+    a: "Fill out the contact form and our team will reach out within 24 hours to walk you through how Health Vault Plus works for your hospital.",
   },
 ];
 

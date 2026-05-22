@@ -33,34 +33,34 @@ const ActivityIcon = () => (
 const CARDS = [
   {
     variant: 'primary',
-    badge: 'Primary Users',
+    badge: 'Primary Focus',
     icon: <BuildingIcon/>,
     title: 'Hospitals & Clinics',
     bullets: [
-      'Stop typing the same patient information over and over',
-      'Catch mistakes before the claim is rejected',
-      'Get paid faster with clean, accurate claims',
+      'Connect your existing software to national health exchanges with zero setup hassle',
+      'Stop typing the same patient information over and over across multiple portals',
+      'Catch billing mistakes and missing details before they leave your desk',
     ],
   },
   {
     variant: 'secondary',
     icon: <UsersIcon />,
-    title: 'Patient & Policy Holder',
+    title: 'Billing & Admin Teams',
     bullets: [
-      'Receive clean, standard claims from any TPA',
-      'Spend less time reading messy  notes',
-      'Communicate easily with insurance companies',
+      'Track all incoming and outgoing claims in a single, clean dashboard',
+      'Get real-time warnings for missing documents or wrong treatment codes',
+      'Speed up discharge approvals, keeping patients happy and cash flowing',
     ],
   },
 ];
 
 export default function WhoItsFor() {
   return (
-    <section className="who-its-for section" id="target-customers">
+    <section className="who-its-for section" id="who-it-helps">
       <div className="container">
         <SectionHeader
           label="Who We Help"
-          title="Making Life Easier for Everyone"
+          title="Built for Your Billing Success"
           align="center"
         />
         <div className="who-its-for__grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>

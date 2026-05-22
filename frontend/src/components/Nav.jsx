@@ -3,9 +3,9 @@ import Button from './Button';
 import logo_nav from '../assets/logo-nav.png';
 
 const NAV_LINKS = [
-  { label: 'Problem', target: 'problem' },
-  { label: 'Platform', target: 'platform' },
-  { label: 'Workflow', target: 'workflow' },
+  { label: 'What We Do', target: 'about-us' },
+  { label: 'Capabilities', target: 'platform' },
+  { label: 'Setup Roadmap', target: 'workflow' },
   { label: 'Contact', target: 'contact' },
 ];
 

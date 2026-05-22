@@ -11,15 +11,15 @@ export default function Hero() {
           <div className="hero__left">
             <div className="hero__eyebrow hero-anim-1">
               <span className="hero__eyebrow-dot" />
-              <span>NHCX & ABDM Compliant</span>
+              <span>Automated Insurance Helper for Hospitals</span>
             </div>
 
             <h1 className="hero__headline hero-anim-2">
-              <span className="accent">PMJAY</span> Integrated Hospital Software
+              Automate Hospital Claims & <span className="accent">Insurance Workflows</span>
             </h1>
 
             <p className="hero__subtext hero-anim-3">
-              Automate your insurance workflows with our ABDM-certified platform. Connect directly to NHCX and seamlessly process PMJAY claims without manual entry.
+              We turn slow, manual hospital paperwork into fast, automated, and error-free insurance claims. We move your hospital from messy, unstructured doctor notes to clean digital files that insurance systems can read and approve instantly.
             </p>
 
             <div className="hero__cta-row hero-anim-4">
@@ -49,15 +49,15 @@ export default function Hero() {
           </div>
 
           {/* Right Column — Claims Validation Card (Mockup UI) */}
-          <div className="hero__right">
+          <div className="hero__right" style={{ flexDirection: 'column', gap: '12px', alignItems: 'center' }}>
             <div className="mockup-card hero-anim-card cvc">
               {/* Header */}
               <div className="mockup-card__header">
                 <span className="mockup-card__claim-id">
                   <span className="cvc__badge-dot" />
-                  NHCX · FHIR · ABDM
+                  Simulated Claims Checking Demo
                 </span>
-                <Badge label="Live Scan" variant="success" />
+                <Badge label="Demo Preview" variant="success" />
               </div>
 
               <div className="mockup-card__divider" />
@@ -68,32 +68,32 @@ export default function Hero() {
                   {
                     num: "✓",
                     state: "done",
-                    title: "Patient data fetched",
-                    detail: "ABHA ID pulls records & policy instantly.",
+                    title: "Verify patient details instantly",
+                    detail: "Pull patient policies and records automatically.",
                     tag: null,
                   },
                   {
                     num: "✓",
                     state: "done",
-                    title: "Claim auto-filled & coded",
-                    detail: "ICD-10, SNOMED — suggested automatically.",
-                    tag: { label: "FHIR-compliant", variant: "default" },
+                    title: "Autofill claims & codes",
+                    detail: "System suggests correct treatment codes automatically.",
+                    tag: { label: "Standard Compliant", variant: "default" },
                   },
                   {
                     num: "3",
                     state: "active",
-                    title: "Errors detected & corrected",
+                    title: "Catch mistakes automatically",
                     detail:
-                      "Missing modifiers, wrong codes — fixed before send.",
+                      "Flags missing documents and incorrect numbers before sending.",
                     tag: null,
                   },
                   {
                     num: "4",
                     state: "idle",
-                    title: "One click to NHCX",
+                    title: "Submit in one click",
                     detail:
-                      "Reviewer confirms. Submitted straight to exchange.",
-                    tag: { label: "Straight to NHCX ✓", variant: "success" },
+                      "Reviewer approves and sends directly to the insurance network.",
+                    tag: { label: "Ready to send ✓", variant: "success" },
                   },
                 ].map((step, i) => (
                   <li key={i} className={`cvc__step cvc__step--${step.state}`}>
@@ -131,6 +131,18 @@ export default function Hero() {
                 ))}
               </div>
             </div>
+            <p style={{
+              fontSize: '12px',
+              color: 'var(--text-muted)',
+              textAlign: 'center',
+              margin: '0',
+              fontFamily: 'var(--font-body)',
+              fontStyle: 'italic',
+              animation: 'heroFadeUp 0.3s ease-out both',
+              animationDelay: '0.4s'
+            }}>
+              * Note: No live AI or backend is connected yet. This is a simulated frontend demonstration.
+            </p>
           </div>
         </div>
       </div>

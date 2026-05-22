@@ -26,7 +26,7 @@ const DIFFERENTIATORS = [
   {
     icon: <ShieldIcon />,
     title: '100% Private & Secure',
-    description: 'Patient data never leaves your hospital\'s secure network. Everything is processed safely to protect patient privacy.',
+    description: 'Patient data never leaves your physical facility. Everything runs locally on your servers, meaning zero cloud dependency and absolute security.',
   },
   {
     icon: <NetworkIcon />,
