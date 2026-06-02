@@ -23,7 +23,7 @@ export default function WhatWeDo() {
           align="center"
         />
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '64px', marginTop: '64px' }}>
+        <div className="capabilities-grid" style={{ marginTop: '64px' }}>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div style={{ width: '56px', height: '56px', background: 'var(--accent)', color: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

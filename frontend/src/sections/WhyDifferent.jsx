@@ -45,7 +45,7 @@ export default function WhyDifferent() {
           subtext="Health Vault Plus is built to be powerful behind the scenes but incredibly easy for your team to use."
           align="center"
         />
-        <div className="what-we-do__grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px' }}>
+        <div className="why-different__grid">
           {DIFFERENTIATORS.map((diff, i) => (
             <FeatureCard
               key={i}

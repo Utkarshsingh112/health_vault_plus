@@ -48,7 +48,7 @@ export default function Contact() {
           align="center"
         />
 
-        <div className="contact__grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '64px', marginTop: '48px', textAlign: 'left' }}>
+        <div className="contact__grid">
           
           {/* Left Column — Contact Info */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>

@@ -157,13 +157,7 @@ export default function PlatformFeatures() {
           align="center"
         />
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1.2fr',
-          gap: '40px',
-          marginTop: '40px',
-          alignItems: 'stretch'
-        }}>
+        <div className="platform__grid">
           {/* Left Column - Tabs List */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {TABS.map((tab, idx) => {

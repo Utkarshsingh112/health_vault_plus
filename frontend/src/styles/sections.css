@@ -554,9 +554,178 @@
   line-height: 1.4;
 }
 
+/* ---- Workflow Timeline ---- */
+.workflow__container {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 80px;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.workflow__timeline {
+  flex: 1 1 60%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  min-width: 600px;
+}
+
+.workflow__line {
+  position: absolute;
+  top: 24px;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background: #E4E8F0;
+  z-index: 0;
+}
+
+.workflow__step {
+  position: relative;
+  z-index: 1;
+  width: 30%;
+}
+
+.workflow__step-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 4px solid #E4E8F0;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0 auto 24px;
+  background-color: #fff;
+}
+
+.workflow__step--active .workflow__step-circle {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 0 6px rgba(46, 124, 246, 0.1);
+}
+
+.workflow__step-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.workflow__step--active .workflow__step-title {
+  color: var(--accent);
+}
+
+.workflow__step-desc {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.workflow__callout {
+  flex: 1 1 30%;
+  background: #F8FAFC;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #E4E8F0;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+  min-width: 300px;
+}
+
+/* ---- Platform Capabilities Layout ---- */
+.platform__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  margin-top: 40px;
+  align-items: stretch;
+}
+
+/* ---- Why Different Grid ---- */
+.why-different__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+/* ---- Contact Grid ---- */
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 64px;
+  margin-top: 48px;
+  text-align: left;
+}
+
 /* ============================================
    Responsive
    ============================================ */
+
+@media (max-width: 992px) {
+  .workflow__container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .workflow__timeline {
+    flex-direction: column;
+    width: 100%;
+    min-width: 100% !important;
+    gap: 32px;
+    padding-left: 16px;
+  }
+
+  .workflow__line {
+    top: 24px;
+    bottom: 24px;
+    left: 26px;
+    width: 4px;
+    height: auto;
+    right: auto;
+  }
+
+  .workflow__step {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .workflow__step-circle {
+    margin: 0 !important;
+    flex-shrink: 0;
+  }
+
+  .workflow__step-content {
+    flex: 1;
+  }
+
+  .workflow__step-title {
+    text-align: left !important;
+    margin-bottom: 6px !important;
+  }
+
+  .workflow__step-desc {
+    text-align: left !important;
+  }
+
+  .workflow__callout {
+    width: 100%;
+    min-width: 100% !important;
+  }
+
+  .platform__grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 768px) {
   .hero {
@@ -611,7 +780,18 @@
     grid-template-columns: 1fr;
   }
 
+  /* Why Different */
+  .why-different__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
   /* Contact */
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
   .contact__headline {
     font-size: 36px;
   }

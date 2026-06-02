@@ -63,7 +63,7 @@ export default function WhoItsFor() {
           title="Built for Your Billing Success"
           align="center"
         />
-        <div className="who-its-for__grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+        <div className="who-its-for__grid">
           {CARDS.map((card, i) => (
             <AudienceCard
               key={i}
